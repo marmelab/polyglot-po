@@ -1,17 +1,30 @@
 {
     "parser": "babel-eslint",
     "parserOptions": {
-        "sourceType": "module"
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "env": {
+        "es6": true,
+        "node": true,
+        "jest": true
     },
     "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
         "plugin:prettier/recommended",
-        "prettier/babel"
+        "prettier/babel",
+        "prettier/react"
     ],
     "plugins": [
         "import",
+        "react",
         "prettier"
     ],
     "rules": {
+        "no-console": "warn",
         "no-use-before-define": "off",
         "prettier/prettier": "error"
     }
