@@ -11,8 +11,7 @@ export const convertFileToPo = async filePath => {
 
         const poLines = convertJSONToPo(json);
         const poFilePath = getPoFilePath(fullFilePath);
-        const fileContent = poLines.map(getPoText).join('\n');
-        await writePoFile(poFilePath, fileContent);
+        await writePoFile(poFilePath, poLines);
 
         return {
             file: filePath,
@@ -24,7 +23,10 @@ export const convertFileToPo = async filePath => {
     }
 };
 
-export const convertJSONToPo = json => reduceJSONToPo('', json);
+export const convertJSONToPo = json =>
+    reduceJSONToPo('', json)
+        .map(getPoText)
+        .join('\n');
 
 const reduceJSONToPo = (prefix, json) =>
     Object.keys(json).reduce((acc, key) => {
