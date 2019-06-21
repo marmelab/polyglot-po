@@ -1,0 +1,11 @@
+{
+    "root": {
+        "key1": "englishForKey1",
+        "key2": "englishForKey2",
+        "deep": {
+            "deepKey1": "englishForDeepKey1",
+            "deepKey2": "englishForDeepKey2"
+        },
+        "plural": "englishForOne||||englishForMany"
+    }
+}

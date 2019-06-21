@@ -1,0 +1,10 @@
+npm-debug.log
+yarn-error.log
+lerna-debug.log
+node_modules
+build
+esm
+es6
+.rpt2_cache
+tests/json-to-po/*.po
+tests/po-to-json/*.json

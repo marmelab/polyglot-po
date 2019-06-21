@@ -1,0 +1,18 @@
+{
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "sourceType": "module"
+    },
+    "extends": [
+        "plugin:prettier/recommended",
+        "prettier/babel"
+    ],
+    "plugins": [
+        "import",
+        "prettier"
+    ],
+    "rules": {
+        "no-use-before-define": "off",
+        "prettier/prettier": "error"
+    }
+}

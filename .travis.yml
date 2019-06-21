@@ -1,0 +1,19 @@
+language: node_js
+sudo: required
+node_js:
+  - '10.16.0'
+addons:
+  chrome: stable
+env:
+  global:
+    - DISPLAY=:99.0
+    - NODE_ENV=test
+dist: trusty
+cache:
+  yarn: true
+  directories:
+    - ~/.cache
+before_install:
+    - curl -o- -L https://yarnpkg.com/install.sh | bash
+    - sleep 3
+script: make test
