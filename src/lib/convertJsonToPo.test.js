@@ -28,32 +28,45 @@ describe('convertJSONToPo', () => {
         });
     });
 
-    test('convert complex JSON with plurals to PO', () => {
-        expect(
-            convertJSONToPo(
-                [
-                    { key: 'root.key1', value: 'frenchForKey1' },
-                    { key: 'root.key2', value: 'frenchForKey2' },
-                    { key: 'root.deep.deepKey1', value: 'frenchForDeepKey1' },
-                    { key: 'root.deep.deepKey2', value: 'frenchForDeepKey2' },
-                    {
-                        key: 'root.plural',
-                        value: 'frenchForOne||||frenchForMany',
-                    },
-                ],
-                [
-                    { key: 'root.key1', value: 'englishForKey1' },
-                    { key: 'root.key2', value: 'englishForKey2' },
-                    { key: 'root.deep.deepKey1', value: 'englishForDeepKey1' },
-                    { key: 'root.deep.deepKey2', value: 'englishForDeepKey2' },
-                    {
-                        key: 'root.plural',
-                        value: 'englishForOne||||englishForMany',
-                    },
-                ]
-            ).toString()
-        ).toEqual(
-            `msgid ""
+    describe('convertJSONToPo', () => {
+        test('convert complex JSON with plurals to PO', () => {
+            expect(
+                convertJSONToPo(
+                    [
+                        { key: 'root.key1', value: 'frenchForKey1' },
+                        { key: 'root.key2', value: 'frenchForKey2' },
+                        {
+                            key: 'root.deep.deepKey1',
+                            value: 'frenchForDeepKey1',
+                        },
+                        {
+                            key: 'root.deep.deepKey2',
+                            value: 'frenchForDeepKey2',
+                        },
+                        {
+                            key: 'root.plural',
+                            value: 'frenchForOne||||frenchForMany',
+                        },
+                    ],
+                    [
+                        { key: 'root.key1', value: 'englishForKey1' },
+                        { key: 'root.key2', value: 'englishForKey2' },
+                        {
+                            key: 'root.deep.deepKey1',
+                            value: 'englishForDeepKey1',
+                        },
+                        {
+                            key: 'root.deep.deepKey2',
+                            value: 'englishForDeepKey2',
+                        },
+                        {
+                            key: 'root.plural',
+                            value: 'englishForOne||||englishForMany',
+                        },
+                    ]
+                ).toString()
+            ).toEqual(
+                `msgid ""
 msgstr ""
 
 #. key: root.key1
@@ -78,6 +91,7 @@ msgid_plural "englishForMany"
 msgstr[0] "frenchForOne"
 msgstr[1] "frenchForMany"
 `
-        );
+            );
+        });
     });
 });

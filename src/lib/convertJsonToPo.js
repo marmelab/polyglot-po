@@ -11,6 +11,12 @@ const DefaultHeaders = {
     'MIME-Version': '1.0',
 };
 
+/**
+ * Convert JSON files to PO files
+ * @param {string[]} filePaths The paths of the files to convert (eg: ['home/node/myProject/i18n/en.json', 'home/node/myProject/i18n/fr.json'])
+ * @param {string} defaultLocale The locale from which the po msgid entries will be extracted (default to 'en')
+ * @param {object} defaultHeaders The PO files headers. See https://www.gnu.org/software/trans-coord/manual/gnun/html_node/PO-Header.html
+ */
 export const convertFilesToPo = async (
     filePaths,
     defaultLocale = 'en',
