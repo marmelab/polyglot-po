@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useMachine } from '@xstate/react';
 import { Color, Box, Text } from 'ink';
 
@@ -69,6 +70,11 @@ const ConvertToPo = ({ pattern, exit }) => {
             }
             return null;
     }
+};
+
+ConvertToPo.propTypes = {
+    exit: PropTypes.func.isRequired,
+    pattern: PropTypes.string.isRequired,
 };
 
 export default ConvertToPo;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Color, Box } from 'ink';
 import SelectInput from 'ink-select-input';
 
@@ -39,6 +40,13 @@ const AskConfirmation = ({
             </Box>
         </Box>
     );
+};
+
+AskConfirmation.propTypes = {
+    children: PropTypes.node.isRequired,
+    onConfirm: PropTypes.func.isRequired,
+    onCancel: PropTypes.func.isRequired,
+    label: PropTypes.string,
 };
 
 export default AskConfirmation;

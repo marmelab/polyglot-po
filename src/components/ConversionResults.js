@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Text, Color, Box } from 'ink';
 
 const ConversionResults = ({ conversionResults }) => (
@@ -7,7 +8,7 @@ const ConversionResults = ({ conversionResults }) => (
             <Color gray>Conversion results: </Color>
         </Box>
         {conversionResults.map(result => (
-            <Box key={result.file} flexDirection="column">
+            <Box key={result.input} flexDirection="column">
                 <Box>
                     {result.error ? (
                         <Color red>❌</Color>
@@ -16,7 +17,7 @@ const ConversionResults = ({ conversionResults }) => (
                     )}
                     <Box marginLeft={1}>
                         <Text>
-                            {result.file} => {result.output}
+                            {result.input} {'=>'} {result.output}
                         </Text>
                     </Box>
                     {result.error ? <Color red>{result.error}</Color> : null}
@@ -25,5 +26,14 @@ const ConversionResults = ({ conversionResults }) => (
         ))}
     </Box>
 );
+
+ConversionResults.propTypes = {
+    conversionResults: PropTypes.arrayOf(
+        PropTypes.shape({
+            input: PropTypes.string.isRequired,
+            output: PropTypes.string.isRequired,
+        })
+    ).isRequired,
+};
 
 export default ConversionResults;

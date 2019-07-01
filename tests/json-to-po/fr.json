@@ -1,11 +1,11 @@
 {
     "root": {
-        "key1": "frenchForKey1",
-        "key2": "frenchForKey2",
-        "deep": {
-            "deepKey1": "frenchForDeepKey1",
-            "deepKey2": "frenchForDeepKey2"
+        "welcome": "Bienvenue",
+        "goodbye": "Au revoir",
+        "action": {
+            "edit": "Editer",
+            "create": "Créer"
         },
-        "plural": "frenchForOne||||frenchForMany"
+        "items_created": "Élément créé||||Éléments créés"
     }
 }

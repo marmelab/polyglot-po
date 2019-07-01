@@ -49,7 +49,7 @@ export const getMachine = ({ convertFiles, pattern, exit }) =>
             [States.Searching]: {
                 invoke: {
                     id: 'findFiles',
-                    src: (context, event) => callback => {
+                    src: context => callback => {
                         findFiles(context.pattern)
                             .then(files => {
                                 if (files.length > 0) {
@@ -103,7 +103,7 @@ export const getMachine = ({ convertFiles, pattern, exit }) =>
                 src: assignEventData('error'),
             },
             [States.Exiting]: {
-                src: () => context.exit(),
+                src: context => context.exit(),
             },
             [States.ShowingError]: {},
         },
