@@ -19,7 +19,6 @@ const App = ({ inputType, pattern, autoAccept, exit }) => {
     );
 
     const handlePatternSubmit = value => {
-        console.log('handlePatternSubmit', { value });
         send({
             type: Actions.SelectPattern,
             data: value,
@@ -35,7 +34,6 @@ const App = ({ inputType, pattern, autoAccept, exit }) => {
     };
 
     const handleModeSelected = ({ value }) => {
-        console.log('handleModeSelected', { value });
         send({
             type: Actions.SelectMode,
             data: value,
