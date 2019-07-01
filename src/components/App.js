@@ -1,51 +1,57 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text, Box } from 'ink';
+import { Color, Box, Text } from 'ink';
 import SelectInput from 'ink-select-input';
 import { useMachine } from '@xstate/react';
 import { Machine } from 'xstate';
 
 import assignEventData from '../assignEventData';
-import ConvertToPo from './ConvertToPo';
+import { convertFilesToPo, convertFilesToJson, findFiles } from '../lib';
+import AskConfirmation from './AskConfirmation';
+import ConversionResults from './ConversionResults';
 import Error from './Error';
+import Loading from './Loading';
 import TextInput from './TextInput';
 
 const App = ({ inputType, pattern, autoAccept, exit }) => {
     const [current, send] = useMachine(
-        getMachine({ exit, mode: inputType, pattern })
+        getMachine({ autoAccept, exit, mode: inputType, pattern })
     );
 
-    const handleModeSelected = ({ value }) => {
-        send({
-            type: Actions.SelectMode,
-            data: value,
-        });
-    };
-
     const handlePatternSubmit = value => {
+        console.log('handlePatternSubmit', { value });
         send({
             type: Actions.SelectPattern,
             data: value,
         });
     };
 
+    const handleConfirm = () => {
+        send(Actions.Confirm);
+    };
+
+    const handleCancel = () => {
+        send(Actions.Cancel);
+    };
+
+    const handleModeSelected = ({ value }) => {
+        console.log('handleModeSelected', { value });
+        send({
+            type: Actions.SelectMode,
+            data: value,
+        });
+    };
+
     switch (current.value) {
-        case States.Processing:
-            if (current.context.mode === ConversionModes.JsonToPo) {
-                return (
-                    <ConvertToPo
-                        pattern={current.context.pattern}
-                        autoAccept={autoAccept}
-                        exit={exit}
+        case States.AskingMode:
+            return (
+                <Box flexDirection="column">
+                    <SelectInput
+                        items={modeChoices}
+                        onSelect={handleModeSelected}
                     />
-                );
-            } else {
-                return (
-                    <Error>
-                        Sorry, conversion to PO files is not implemented yet...
-                    </Error>
-                );
-            }
+                </Box>
+            );
 
         case States.AskingPattern:
             return (
@@ -55,23 +61,49 @@ const App = ({ inputType, pattern, autoAccept, exit }) => {
                     </Text>
                 </TextInput>
             );
+        case States.Searching:
+            return <Loading>Searching...</Loading>;
+
+        case States.AskingConfirmation:
+            return (
+                <AskConfirmation
+                    onConfirm={handleConfirm}
+                    onCancel={handleCancel}
+                >
+                    <Box marginBottom={1}>
+                        <Color green>Found the following files: </Color>
+                    </Box>
+                    {current.context.files.map(file => (
+                        <Text key={file}>{file}</Text>
+                    ))}
+                </AskConfirmation>
+            );
+
+        case States.Converting:
+            if (current.context.mode === ConversionModes.JsonToPo) {
+                return <Loading>Converting to PO...</Loading>;
+            }
+            return <Loading>Converting to JSON...</Loading>;
+
+        case States.ShowingResults:
+            return (
+                <ConversionResults
+                    conversionResults={current.context.conversionResults}
+                />
+            );
 
         default:
-            return (
-                <Box flexDirection="column">
-                    <SelectInput
-                        items={modeChoices}
-                        onSelect={handleModeSelected}
-                    />
-                </Box>
-            );
+            if (current.context.error) {
+                return <Error>{current.context.error.message}</Error>;
+            }
+            return null;
     }
 };
 
 App.propTypes = {
     exit: PropTypes.func.isRequired,
     inputType: PropTypes.oneOf(['json', 'po']),
-    pattern: PropTypes.arrayOf(PropTypes.string),
+    pattern: PropTypes.string,
     autoAccept: PropTypes.bool,
 };
 
@@ -96,7 +128,11 @@ const modeChoices = [
 const States = {
     AskingMode: 'AskingMode',
     AskingPattern: 'AskingPattern',
-    Processing: 'Processing',
+    Searching: 'Searching',
+    AskingConfirmation: 'AskingConfirmation',
+    Converting: 'Converting',
+    ShowingResults: 'ShowingResults',
+    ShowingError: 'ShowingError',
     Exiting: 'Exiting',
 };
 
@@ -104,18 +140,26 @@ const Actions = {
     SelectMode: 'SelectMode',
     SelectPattern: 'SelectPattern',
     Cancel: 'Cancel',
+    Confirm: 'Confirm',
 };
 
-export const getMachine = ({ exit, mode, pattern = '' }) =>
+const InternalActions = {
+    Convert: 'Convert',
+    AskConfirmation: 'AskConfirmation',
+    ShowError: 'ShowError',
+};
+
+export const getMachine = ({ autoAccept, exit, mode, pattern = '' }) =>
     Machine({
         id: 'root',
         initial:
             mode && pattern
-                ? States.Processing
+                ? States.Searching
                 : mode
                 ? States.AskingPattern
                 : States.AskingMode,
         context: {
+            autoAccept,
             mode,
             pattern,
             exit,
@@ -140,7 +184,80 @@ export const getMachine = ({ exit, mode, pattern = '' }) =>
                     },
                 },
             },
-            [States.Processing]: {},
+            [States.AskingPattern]: {
+                on: {
+                    [Actions.SelectPattern]: {
+                        target: States.Searching,
+                        actions: assignEventData('pattern'),
+                    },
+                },
+            },
+            [States.Searching]: {
+                invoke: {
+                    id: 'findFiles',
+                    src: context => callback => {
+                        findFiles(context.pattern)
+                            .then(files => {
+                                if (files.length > 0) {
+                                    context.files = files;
+
+                                    if (autoAccept) {
+                                        callback(InternalActions.Convert);
+                                        return;
+                                    }
+                                    callback(InternalActions.AskConfirmation);
+                                    return;
+                                }
+
+                                callback({
+                                    type: InternalActions.ShowError,
+                                    data: new Error(
+                                        'Could not find any files matching your patterns'
+                                    ),
+                                });
+                                return;
+                            })
+                            .catch(error => {
+                                callback({
+                                    type: InternalActions.ShowError,
+                                    data: error,
+                                });
+                            });
+                    },
+                },
+                on: {
+                    [InternalActions.Convert]: States.Converting,
+                    [InternalActions.AskConfirmation]:
+                        States.AskingConfirmation,
+                    [InternalActions.ShowError]: States.ShowingError,
+                },
+            },
+            [States.AskingConfirmation]: {
+                on: {
+                    [Actions.Confirm]: States.Converting,
+                    [Actions.Cancel]: States.Exiting,
+                },
+            },
+            [States.Converting]: {
+                invoke: {
+                    id: 'convert',
+                    src: context =>
+                        context.mode === ConversionModes.JsonToPo
+                            ? convertFilesToPo(context.files)
+                            : convertFilesToJson(context.files),
+                    onDone: {
+                        target: States.ShowingResults,
+                        actions: assignEventData('conversionResults'),
+                    },
+                    onError: {
+                        target: States.ShowingError,
+                    },
+                },
+            },
+            [States.ShowingResults]: {},
+            [States.ShowingError]: {
+                src: assignEventData('error'),
+            },
             [States.Exiting]: {},
         },
     });
