@@ -1,7 +1,7 @@
 import path from 'path';
 import PO from 'pofile';
 import set from 'lodash/set';
-import { writeJsonSync } from 'fs-extra';
+import fs from 'fs-extra';
 
 /**
  * Convert PO files to JSON files
@@ -21,7 +21,7 @@ const convertPoToJson = async filePath => {
     );
 
     const jsonFullFilePath = fullFilePath.replace('.po', '.json');
-    writeJsonSync(jsonFullFilePath, json);
+    fs.writeJsonSync(jsonFullFilePath, json);
 
     const jsonFilePath = filePath.replace('.po', '.json');
 

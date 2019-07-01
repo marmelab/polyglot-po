@@ -1,6 +1,6 @@
 import path from 'path';
 import PO from 'pofile';
-import { readJsonSync } from 'fs-extra';
+import fs from 'fs-extra';
 
 const DefaultHeaders = {
     'Project-Id-Version': '1.0',
@@ -101,7 +101,7 @@ const convertToPoItem = entries => defaultEntry => {
 };
 
 const loadLocaleFile = filePath => {
-    const json = readJsonSync(filePath);
+    const json = fs.readJsonSync(filePath);
     return json;
 };
 
