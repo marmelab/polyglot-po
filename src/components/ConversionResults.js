@@ -7,7 +7,7 @@ const ConversionResults = ({ conversionResults }) => (
             <Color gray>Conversion results: </Color>
         </Box>
         {conversionResults.map(result => (
-            <Box key={result.file} flexDirection="column">
+            <Box key={result.input} flexDirection="column">
                 <Box>
                     {result.error ? (
                         <Color red>❌</Color>
@@ -16,7 +16,7 @@ const ConversionResults = ({ conversionResults }) => (
                     )}
                     <Box marginLeft={1}>
                         <Text>
-                            {result.file} => {result.output}
+                            {result.input} {'=>'} {result.output}
                         </Text>
                     </Box>
                     {result.error ? <Color red>{result.error}</Color> : null}

@@ -26,6 +26,7 @@
     "rules": {
         "no-console": "warn",
         "no-use-before-define": "off",
-        "prettier/prettier": "error"
+        "prettier/prettier": "error",
+        "react/prop-types": "warn"
     }
 }
