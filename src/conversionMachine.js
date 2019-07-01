@@ -19,11 +19,12 @@ export const Actions = {
 };
 
 const InternalActions = {
+    Convert: 'Convert',
     AskConfirmation: 'AskConfirmation',
     ShowError: 'ShowError',
 };
 
-export const getMachine = ({ convertFiles, pattern, exit }) =>
+export const getMachine = ({ autoAccept, convertFiles, pattern, exit }) =>
     Machine({
         id: 'json-to-po',
         initial:
@@ -31,6 +32,7 @@ export const getMachine = ({ convertFiles, pattern, exit }) =>
                 ? States.Searching
                 : States.AskingPattern,
         context: {
+            autoAccept,
             pattern,
             exit,
             files: undefined,
@@ -54,6 +56,11 @@ export const getMachine = ({ convertFiles, pattern, exit }) =>
                             .then(files => {
                                 if (files.length > 0) {
                                     context.files = files;
+
+                                    if (context.autoAccept) {
+                                        callback(InternalActions.Convert);
+                                        return;
+                                    }
                                     callback(InternalActions.AskConfirmation);
                                     return;
                                 }
@@ -75,6 +82,7 @@ export const getMachine = ({ convertFiles, pattern, exit }) =>
                     },
                 },
                 on: {
+                    [InternalActions.Convert]: States.Converting,
                     [InternalActions.AskConfirmation]:
                         States.AskingConfirmation,
                     [InternalActions.ShowError]: States.ShowingError,

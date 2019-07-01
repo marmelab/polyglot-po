@@ -82,13 +82,18 @@ polyglot-po
 Starts the CLI in interactive mode, allowing you to select the type of conversion and the files to convert.
 
 ```bash
-polyglot-po json
+polyglot-po --input-type json
+# or
+polyglot-po -i json
+
 ```
 
 Starts the CLI in interactive mode for converting json files to po, allowing you to select the files to convert.
 
 ```bash
-polyglot-po json --pattern ./i18n/*.json
+polyglot-po --input-type json --pattern ./i18n/*.json
+# or
+polyglot-po -i json -p "./i18n/*.json"
 ```
 
 Starts the CLI in interactive mode for converting json files to po, selecting the files to convert from the specified glob pattern.

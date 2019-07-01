@@ -11,9 +11,14 @@ import TextInput from './TextInput';
 import { getMachine, States, Actions } from '../conversionMachine';
 import { convertFilesToPo } from '../lib';
 
-const ConvertToPo = ({ pattern, exit }) => {
+const ConvertToPo = ({ autoAccept, pattern, exit }) => {
     const [current, send] = useMachine(
-        getMachine({ pattern, exit, convertFiles: convertFilesToPo })
+        getMachine({
+            autoAccept,
+            pattern,
+            exit,
+            convertFiles: convertFilesToPo,
+        })
     );
 
     const handlePatternSubmit = value => {
@@ -73,8 +78,9 @@ const ConvertToPo = ({ pattern, exit }) => {
 };
 
 ConvertToPo.propTypes = {
+    autoAccept: PropTypes.bool,
     exit: PropTypes.func.isRequired,
-    pattern: PropTypes.string.isRequired,
+    pattern: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default ConvertToPo;
