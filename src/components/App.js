@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Text, Box } from 'ink';
 import SelectInput from 'ink-select-input';
 import { useMachine } from '@xstate/react';
@@ -62,6 +63,10 @@ const App = ({ exit }) => {
                 </Box>
             );
     }
+};
+
+App.propTypes = {
+    exit: PropTypes.func.isRequired,
 };
 
 export default App;

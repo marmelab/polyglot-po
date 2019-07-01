@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Text, Color, Box } from 'ink';
 
 const ConversionResults = ({ conversionResults }) => (
@@ -25,5 +26,14 @@ const ConversionResults = ({ conversionResults }) => (
         ))}
     </Box>
 );
+
+ConversionResults.propTypes = {
+    conversionResults: PropTypes.arrayOf(
+        PropTypes.shape({
+            input: PropTypes.string.isRequired,
+            output: PropTypes.string.isRequired,
+        })
+    ).isRequired,
+};
 
 export default ConversionResults;

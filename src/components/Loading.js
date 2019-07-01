@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Color, Box } from 'ink';
 import Spinner from 'ink-spinner';
 
@@ -10,5 +11,9 @@ const Loading = ({ children }) => (
         </Box>
     </Color>
 );
+
+Loading.propTypes = {
+    children: PropTypes.node.isRequired,
+};
 
 export default Loading;

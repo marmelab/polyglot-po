@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Box } from 'ink';
 import InkTextInput from 'ink-text-input';
 
@@ -20,6 +21,11 @@ const TextInput = ({ children, onSubmit }) => {
             />
         </Box>
     );
+};
+
+TextInput.propTypes = {
+    children: PropTypes.node.isRequired,
+    onSubmit: PropTypes.func.isRequired,
 };
 
 export default TextInput;
