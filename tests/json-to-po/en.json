@@ -1,11 +1,11 @@
 {
     "root": {
-        "key1": "englishForKey1",
-        "key2": "englishForKey2",
-        "deep": {
-            "deepKey1": "englishForDeepKey1",
-            "deepKey2": "englishForDeepKey2"
+        "welcome": "Welcome",
+        "goodbye": "Goodbye",
+        "action": {
+            "edit": "Edit",
+            "create": "Create"
         },
-        "plural": "englishForOne||||englishForMany"
+        "items_created": "Item created||||Items created"
     }
 }
