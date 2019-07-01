@@ -10,8 +10,10 @@ import ConvertToPo from './ConvertToPo';
 import Error from './Error';
 import TextInput from './TextInput';
 
-const App = ({ exit }) => {
-    const [current, send] = useMachine(getMachine(exit));
+const App = ({ inputType, pattern, autoAccept, exit }) => {
+    const [current, send] = useMachine(
+        getMachine({ exit, mode: inputType, pattern })
+    );
 
     const handleModeSelected = ({ value }) => {
         send({
@@ -33,6 +35,7 @@ const App = ({ exit }) => {
                 return (
                     <ConvertToPo
                         pattern={current.context.pattern}
+                        autoAccept={autoAccept}
                         exit={exit}
                     />
                 );
@@ -67,13 +70,16 @@ const App = ({ exit }) => {
 
 App.propTypes = {
     exit: PropTypes.func.isRequired,
+    inputType: PropTypes.oneOf(['json', 'po']),
+    pattern: PropTypes.arrayOf(PropTypes.string),
+    autoAccept: PropTypes.bool,
 };
 
 export default App;
 
 const ConversionModes = {
-    JsonToPo: 'json-to-po',
-    PoToJson: 'po-to-json',
+    JsonToPo: 'json',
+    PoToJson: 'po',
 };
 
 const modeChoices = [
@@ -100,19 +106,27 @@ const Actions = {
     Cancel: 'Cancel',
 };
 
-export const getMachine = () =>
+export const getMachine = ({ exit, mode, pattern = '' }) =>
     Machine({
         id: 'root',
-        initial: States.AskingMode,
+        initial:
+            mode && pattern
+                ? States.Processing
+                : mode
+                ? States.AskingPattern
+                : States.AskingMode,
         context: {
-            mode: undefined,
-            pattern: '',
+            mode,
+            pattern,
+            exit,
         },
         states: {
             [States.AskingMode]: {
                 on: {
                     [Actions.SelectMode]: {
-                        target: States.AskingPattern,
+                        target: pattern
+                            ? States.Processing
+                            : States.AskingPattern,
                         actions: assignEventData('mode'),
                     },
                     [Actions.Cancel]: States.Exiting,

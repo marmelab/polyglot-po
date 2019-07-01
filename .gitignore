@@ -6,5 +6,5 @@ build
 esm
 es6
 .rpt2_cache
-tests/json-to-po/*.po
-tests/po-to-json/*.json
+src/tests/json-to-po/*.po
+src/tests/po-to-json/*.json
