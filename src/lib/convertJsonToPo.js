@@ -1,5 +1,6 @@
 import path from 'path';
 import PO from 'pofile';
+import fs from 'fs-extra';
 
 const DefaultHeaders = {
     'Project-Id-Version': '1.0',
@@ -36,8 +37,8 @@ export const convertFilesToPo = async (
             const poFilePath = getPoFilePath(localeWithPo.filePath);
             await savePoFile(localeWithPo.po, poFilePath);
             return {
-                input: path.relative(process.cwd(), localeWithPo.filePath),
-                output: path.relative(process.cwd(), poFilePath),
+                input: localeWithPo.filePath,
+                output: poFilePath,
             };
         })
     );
@@ -54,7 +55,7 @@ const getLocaleDescriptor = filePath => {
 
     return {
         name: locale,
-        filePath: fullFilePath,
+        filePath,
         entries,
     };
 };
@@ -100,7 +101,7 @@ const convertToPoItem = entries => defaultEntry => {
 };
 
 const loadLocaleFile = filePath => {
-    const json = require(filePath);
+    const json = fs.readJsonSync(filePath);
     return json;
 };
 
@@ -128,6 +129,5 @@ const reduceJSONToPo = (prefix, json) =>
     }, []);
 
 const getPoFilePath = filePath => {
-    const file = path.parse(filePath);
-    return `${file.dir}${path.sep}${file.name}.po`;
+    return filePath.replace('.json', '.po');
 };

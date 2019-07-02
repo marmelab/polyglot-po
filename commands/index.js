@@ -23,7 +23,7 @@ Index.propTypes = {
     /// The format of the files to convert: either json or po
     inputType: PropTypes.oneOf(['json', 'po']),
     /// glob pattern to find the files to convert
-    pattern: PropTypes.arrayOf(PropTypes.string),
+    pattern: PropTypes.string,
     /// Boolean indicating wether to auto accept conversions
     yes: PropTypes.bool,
 };
