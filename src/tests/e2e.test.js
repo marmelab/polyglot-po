@@ -19,8 +19,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\\n"
 "Content-Transfer-Encoding: 8bit\\n"
 "MIME-Version: 1.0\\n"
-"POT-Creation-Date: Mon Jul 01 2019\\n"
-"PO-Revision-Date: Mon Jul 01 2019\\n"
+"POT-Creation-Date: ${new Date().toDateString()}\\n"
+"PO-Revision-Date: ${new Date().toDateString()}\\n"
 
 #. key: root.welcome
 msgid "Welcome"
@@ -54,8 +54,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\\n"
 "Content-Transfer-Encoding: 8bit\\n"
 "MIME-Version: 1.0\\n"
-"POT-Creation-Date: Mon Jul 01 2019\\n"
-"PO-Revision-Date: Mon Jul 01 2019\\n"
+"POT-Creation-Date: ${new Date().toDateString()}\\n"
+"PO-Revision-Date: ${new Date().toDateString()}\\n"
 
 #. key: root.welcome
 msgid "Welcome"
