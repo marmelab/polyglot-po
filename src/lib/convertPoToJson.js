@@ -15,10 +15,7 @@ const convertPoToJson = async filePath => {
     const po = await loadLocaleFile(fullFilePath);
     const entries = po.items.map(extractPoEntry);
 
-    const json = entries.reduce(
-        (acc, entry) => set(acc, entry.key, entry.value),
-        {}
-    );
+    const json = dictionaryToObject(entries);
 
     const jsonFullFilePath = fullFilePath.replace('.po', '.json');
     fs.writeJsonSync(jsonFullFilePath, json);
@@ -42,7 +39,10 @@ const loadLocaleFile = filePath =>
         });
     });
 
-const extractPoEntry = poEntry => {
+export const dictionaryToObject = dictionary =>
+    dictionary.reduce((acc, entry) => set(acc, entry.key, entry.value), {});
+
+export const extractPoEntry = poEntry => {
     const key = poEntry.extractedComments.find(comment =>
         comment.includes('key: ')
     );
