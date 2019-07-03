@@ -2,6 +2,6 @@ import globby from 'globby';
 
 export const findFiles = async patterns =>
     globby(patterns, {
-        gitignore: true,
+        gitignore: false,
         expandDirectories: false,
     });
