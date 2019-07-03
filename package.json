@@ -1,6 +1,6 @@
 {
   "name": "polyglot-po",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "license": "MIT",
   "main": "./build/index.umd.js",
   "module": "./build/index.esm.js",
