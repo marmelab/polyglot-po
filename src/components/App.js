@@ -9,13 +9,19 @@ import assignEventData from '../assignEventData';
 import { convertFilesToPo, convertFilesToJson, findFiles } from '../lib';
 import AskConfirmation from './AskConfirmation';
 import ConversionResults from './ConversionResults';
-import Error from './Error';
+import ErrorMessage from './Error';
 import Loading from './Loading';
 import TextInput from './TextInput';
 
-const App = ({ inputType, pattern, autoAccept, exit }) => {
+const App = ({ inputType, pattern, autoAccept, exit, defaultLocaleFile }) => {
     const [current, send] = useMachine(
-        getMachine({ autoAccept, exit, mode: inputType, pattern })
+        getMachine({
+            autoAccept,
+            exit,
+            mode: inputType,
+            pattern,
+            defaultLocaleFile,
+        })
     );
 
     const handlePatternSubmit = value => {
@@ -91,8 +97,19 @@ const App = ({ inputType, pattern, autoAccept, exit }) => {
             );
 
         default:
-            if (current.context.error) {
-                return <Error>{current.context.error.message}</Error>;
+            if (current.event.data) {
+                return (
+                    <>
+                        <ErrorMessage>
+                            {current.event.data.message}
+                        </ErrorMessage>
+                        {process.env.NODE_ENV !== 'production' ? (
+                            <ErrorMessage>
+                                {current.event.data.stack}
+                            </ErrorMessage>
+                        ) : null}
+                    </>
+                );
             }
             return null;
     }
@@ -102,6 +119,7 @@ App.propTypes = {
     exit: PropTypes.func.isRequired,
     inputType: PropTypes.oneOf(['json', 'po']),
     pattern: PropTypes.string,
+    defaultLocaleFile: PropTypes.string,
     autoAccept: PropTypes.bool,
 };
 
@@ -147,7 +165,13 @@ const InternalActions = {
     ShowError: 'ShowError',
 };
 
-export const getMachine = ({ autoAccept, exit, mode, pattern = '' }) =>
+export const getMachine = ({
+    autoAccept,
+    exit,
+    mode,
+    pattern = '',
+    defaultLocaleFile,
+}) =>
     Machine({
         id: 'root',
         initial:
@@ -161,6 +185,7 @@ export const getMachine = ({ autoAccept, exit, mode, pattern = '' }) =>
             mode,
             pattern,
             exit,
+            error: null,
         },
         states: {
             [States.AskingMode]: {
@@ -241,7 +266,7 @@ export const getMachine = ({ autoAccept, exit, mode, pattern = '' }) =>
                     id: 'convert',
                     src: context =>
                         context.mode === ConversionModes.JsonToPo
-                            ? convertFilesToPo(context.files)
+                            ? convertFilesToPo(context.files, defaultLocaleFile)
                             : convertFilesToJson(context.files),
                     onDone: {
                         target: States.ShowingResults,
@@ -253,9 +278,7 @@ export const getMachine = ({ autoAccept, exit, mode, pattern = '' }) =>
                 },
             },
             [States.ShowingResults]: {},
-            [States.ShowingError]: {
-                src: assignEventData('error'),
-            },
+            [States.ShowingError]: {},
             [States.Exiting]: {},
         },
     });

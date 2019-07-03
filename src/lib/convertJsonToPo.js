@@ -15,17 +15,18 @@ const DefaultHeaders = {
 /**
  * Convert JSON files to PO files
  * @param {string[]} filePaths The paths of the files to convert (eg: ['home/node/myProject/i18n/en.json', 'home/node/myProject/i18n/fr.json'])
- * @param {string} defaultLocale The locale from which the po msgid entries will be extracted (default to 'en')
+ * @param {string} defaultLocaleFile The locale from which the po msgid entries will be extracted (default to 'en')
  * @param {object} defaultHeaders The PO files headers. See https://www.gnu.org/software/trans-coord/manual/gnun/html_node/PO-Header.html
  */
 export const convertFilesToPo = async (
     filePaths,
-    defaultLocale = 'en',
+    defaultLocaleFile = 'en.json',
     defaultHeaders = DefaultHeaders
 ) => {
     const locales = filePaths.map(getLocaleDescriptor);
+
     const defaultLocaleDescriptor = locales.find(
-        locale => locale.name === defaultLocale
+        locale => locale.name === defaultLocaleFile
     );
 
     const localesWithPo = await Promise.all(
@@ -44,8 +45,7 @@ export const convertFilesToPo = async (
     );
 };
 
-const extractLocaleFromFilePath = filePath =>
-    path.basename(filePath).split('.')[0];
+const extractLocaleFromFilePath = filePath => path.basename(filePath);
 
 const getLocaleDescriptor = filePath => {
     const locale = extractLocaleFromFilePath(filePath);
@@ -86,6 +86,9 @@ export const convertJSONToPo = (entries, defaultEntries) => {
 
 const convertToPoItem = entries => defaultEntry => {
     const entry = entries.find(entry => entry.key === defaultEntry.key);
+    if (!entry) {
+        throw new Error(`Missing entry for key ${defaultEntry.key}`);
+    }
     const variants = entry.value.split('||||');
     const defaultVariants = defaultEntry.value.split('||||');
 
