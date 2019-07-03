@@ -18,7 +18,9 @@
     "lint": "eslint --fix \"./src/**/*.js\" \"./commands/**/*.js\""
   },
   "files": [
-    "build"
+    "build",
+    "LICENSE.md",
+    "readme.md"
   ],
   "dependencies": {
     "@xstate/react": "^0.7.0",
