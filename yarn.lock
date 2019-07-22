@@ -7009,6 +7009,11 @@ lodash.uniq@^4.5.0:
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
   integrity sha512-cQKh8igo5QUhZ7lg38DYWAxMvjSAKG0A8wGSVimP07SIUEK2UO+arSRKbRZWtelMtN5V0Hkwh5ryOto/SshYIg==
 
+lodash@^4.17.15:
+  version "4.17.15"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
+  integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
+
 log-symbols@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/log-symbols/-/log-symbols-1.0.2.tgz#376ff7b58ea3086a0f09facc74617eca501e1a18"
@@ -8172,10 +8177,10 @@ pascalcase@^0.1.1:
   resolved "https://registry.yarnpkg.com/pascalcase/-/pascalcase-0.1.1.tgz#b363e55e8006ca6fe21784d2db22bd15d7917f14"
   integrity sha1-s2PlXoAGym/iF4TS2yK9FdeRfxQ=
 
-pasteljs@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/pasteljs/-/pasteljs-1.0.2.tgz#aff0c0448aa70e2c6ece31b6a4801d458055253a"
-  integrity sha512-qb9wcpIfhSXZxPecltVCU8easg+ZSMf1cVYlEzT8ZsAgweSJ9otG41aR8r4A1vUPJ6g6uHySTYr/oZ9jHRgf1A==
+pastel@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/pastel/-/pastel-1.0.3.tgz#2a85076bf67ec6f6f66d6fc92102db7ec977c1fe"
+  integrity sha512-Bq0WN/5RKikwc85DX4F0f3chJkhGvstmsA5ajToXDDI7BAx3ygO4rV/sUrNLFuac52kJpzLgWi8ctlwb9dwg2A==
   dependencies:
     "@babel/parser" "^7.3.4"
     "@babel/traverse" "^7.3.4"
