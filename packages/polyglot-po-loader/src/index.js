@@ -1,5 +1,5 @@
 const PO = require('pofile');
-const { extractPoEntry, dictionaryToObject } = require('../common');
+const { extractPoEntry, dictionaryToObject } = require('../../common');
 
 module.exports = function convertPoStringToJson(content) {
     const po = PO.parse(content);
