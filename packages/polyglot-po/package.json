@@ -24,15 +24,16 @@
   ],
   "dependencies": {
     "@xstate/react": "^0.7.0",
+    "fs-extra": "^8.1.0",
     "globby": "^10.0.0",
     "ink": "^2.3.0",
     "ink-select-input": "^3.1.1",
     "ink-spinner": "^3.0.1",
     "ink-text-input": "^3.2.0",
-    "lodash": "^4.17.15",
-    "fs-extra": "^8.1.0",
-    "pastel": "^1.0.3",
+    "lodash": "^4.17.11",
+    "pasteljs": "^1.0.2",
     "pofile": "^1.1.0",
+    "polyglot-po-loader": "^1.0.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "xstate": "^4.6.3"
@@ -57,6 +58,8 @@
     "react-scripts": "3.0.1"
   },
   "jest": {
-    "watchPathIgnorePatterns": ["fixtures"]
+    "watchPathIgnorePatterns": [
+      "fixtures"
+    ]
   }
 }

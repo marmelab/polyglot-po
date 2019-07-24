@@ -1,0 +1,15 @@
+{
+  "name": "polyglot-po-loader",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "lodash": "4.17.11",
+    "pofile": "1.1.0"
+  },
+  "author": "",
+  "license": "ISC"
+}
