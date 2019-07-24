@@ -24,6 +24,7 @@
   ],
   "dependencies": {
     "@xstate/react": "^0.7.0",
+    "common": "^1.0.0",
     "fs-extra": "^8.1.0",
     "globby": "^10.0.0",
     "ink": "^2.3.0",

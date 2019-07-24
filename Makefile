@@ -19,8 +19,14 @@ lint: ## Lint the code and check coding conventions (and automatically fix)
 	@echo "Running linter..."
 	@lerna run lint --stream
 
-test: ## Run tests
+test-polyglot-po: ## Run polyglot-po tests
 	cd ./packages/polyglot-po && yarn -s test;
+
+test-common: ## Run common tests
+	cd ./packages/common && yarn -s test;
+
+test: ## Run all tests
+	lerna run test --stream;
 
 start: ## Run the CLI in development mode
 	lerna run start
