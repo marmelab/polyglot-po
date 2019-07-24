@@ -7,20 +7,20 @@ install: package.json ## Install dependencies
 	@yarn
 
 build-cli: ## Buld the CLI
-	@yarn -s build-pastel
+	@lerna run build-pastel --stream
 
 build-lib: ## Buld the library
-	@yarn -s build-lib
+	@lerna run build-lib --stream
 
 build: ## Buld the packages
-	@yarn -s build
+	@lerna run build --stream
 
 lint: ## Lint the code and check coding conventions (and automatically fix)
 	@echo "Running linter..."
-	@yarn -s lint
+	@lerna run lint --stream
 
 test: ## Run tests
-	yarn -s test;
+	cd ./packages/polyglot-po && yarn -s test;
 
 start: ## Run the CLI in development mode
-	yarn start
+	lerna run start
