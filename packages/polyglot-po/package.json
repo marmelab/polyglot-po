@@ -1,6 +1,6 @@
 {
   "name": "polyglot-po",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "license": "Apache-2.0",
   "main": "./build/index.umd.js",
   "module": "./build/index.esm.js",
@@ -24,7 +24,6 @@
   ],
   "dependencies": {
     "@xstate/react": "^0.7.0",
-    "common": "^1.0.0",
     "fs-extra": "^8.1.0",
     "globby": "^10.0.0",
     "ink": "^2.3.0",
@@ -34,7 +33,6 @@
     "lodash": "^4.17.11",
     "pasteljs": "^1.0.2",
     "pofile": "^1.1.0",
-    "polyglot-po-loader": "^1.0.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "xstate": "^4.6.3"
