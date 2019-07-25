@@ -1,7 +1,8 @@
 import path from 'path';
 import PO from 'pofile';
-import set from 'lodash/set';
 import fs from 'fs-extra';
+
+import { extractPoEntry, dictionaryToObject } from '../../../common';
 
 /**
  * Convert PO files to JSON files
@@ -38,24 +39,3 @@ const loadLocaleFile = filePath =>
             return resolve(po);
         });
     });
-
-export const dictionaryToObject = dictionary =>
-    dictionary.reduce((acc, entry) => set(acc, entry.key, entry.value), {});
-
-export const extractPoEntry = poEntry => {
-    const key = poEntry.extractedComments.find(comment =>
-        comment.includes('key: ')
-    );
-
-    if (!key) {
-        console.warn(
-            `Invalid PO entry (${poEntry.msgid}): it does not contain the key comment`
-        );
-        return [];
-    }
-
-    return {
-        key: key.replace('key: ', ''),
-        value: poEntry.msgstr.join('||||'),
-    };
-};
