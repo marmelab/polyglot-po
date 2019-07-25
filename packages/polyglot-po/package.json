@@ -1,7 +1,7 @@
 {
   "name": "polyglot-po",
   "version": "0.0.1",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "main": "./build/index.umd.js",
   "module": "./build/index.esm.js",
   "bin": "./build/cli.js",
