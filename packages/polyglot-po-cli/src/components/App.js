@@ -4,9 +4,9 @@ import { Color, Box, Text } from 'ink';
 import SelectInput from 'ink-select-input';
 import { useMachine } from '@xstate/react';
 import { Machine } from 'xstate';
+import { convertFilesToPo, convertFilesToJson, findFiles } from 'polyglot-po';
 
 import assignEventData from '../assignEventData';
-import { convertFilesToPo, convertFilesToJson, findFiles } from '../lib';
 import AskConfirmation from './AskConfirmation';
 import ConversionResults from './ConversionResults';
 import ErrorMessage from './Error';

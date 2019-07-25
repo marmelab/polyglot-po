@@ -10,10 +10,8 @@
   },
   "scripts": {
     "start": "pastel dev",
-    "build-pastel": "pastel build",
-    "build-lib": "bili --config ./.bilirc.js",
-    "build": "npm-run-all build-pastel build-lib",
-    "prepare": "npm-run-all build-pastel build-lib",
+    "build": "pastel build",
+    "prepare": "pastel build",
     "lint": "eslint --fix \"./src/**/*.js\" \"./commands/**/*.js\""
   },
   "files": [
@@ -32,6 +30,7 @@
     "lodash": "^4.17.11",
     "pasteljs": "^1.0.2",
     "pofile": "^1.1.0",
+    "polyglot-po": "0.0.1",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "xstate": "^4.6.3"
@@ -40,7 +39,6 @@
     "@babel/core": "7.4.5",
     "@babel/preset-env": "7.4.5",
     "@babel/preset-react": "7.0.0",
-    "bili": "^4.8.0",
     "cross-env": "^5.2.0",
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^5.0.0",

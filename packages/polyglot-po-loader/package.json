@@ -9,6 +9,7 @@
   "dependencies": {
     "lodash": "4.17.11",
     "pofile": "1.1.0",
+    "polyglot-po": "^0.0.1",
     "webpack": "4.35.2",
     "webpack-cli": "3.3.6"
   },

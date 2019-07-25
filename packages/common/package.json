@@ -6,7 +6,8 @@
   "main": "index.js",
   "scripts": {},
   "dependencies": {
-    "lodash": "4.17.15"
+    "lodash": "4.17.15",
+    "polyglot-po": "^0.0.1"
   },
   "author": "",
   "license": "Apache-2.0"

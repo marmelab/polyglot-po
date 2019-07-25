@@ -1,0 +1,20 @@
+{
+  "name": "polyglot-po",
+  "version": "0.0.1",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "bili --config ./.bilirc.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "fs-extra": "^8.1.0",
+    "globby": "^10.0.0",
+    "pofile": "1.1.0"
+  }, 
+  "devDependencies": {
+    "bili": "^4.8.0"
+  }
+}

@@ -2,7 +2,7 @@ import path from 'path';
 import PO from 'pofile';
 import fs from 'fs-extra';
 
-import { extractPoEntry, dictionaryToObject } from '../../../common';
+import { extractPoEntry, dictionaryToObject } from '../../common';
 
 /**
  * Convert PO files to JSON files
