@@ -1,5 +1,5 @@
 {
-  "name": "polyglot-po",
+  "name": "polyglot-po-cli",
   "version": "0.0.3",
   "license": "Apache-2.0",
   "main": "./build/index.umd.js",
