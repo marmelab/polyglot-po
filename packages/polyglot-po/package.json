@@ -14,7 +14,6 @@
     "build-lib": "bili --config ./.bilirc.js",
     "build": "npm-run-all build-pastel build-lib",
     "prepare": "npm-run-all build-pastel build-lib",
-    "test": "react-scripts test --env=node",
     "lint": "eslint --fix \"./src/**/*.js\" \"./commands/**/*.js\""
   },
   "files": [
