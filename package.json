@@ -3,6 +3,13 @@
   "dependencies": {
     "lerna": "^3.16.4"
   },
+  "devDependencies": {
+    "@babel/core": "7.4.5",
+    "@babel/preset-env": "7.4.5",
+    "@babel/preset-react": "7.0.0",
+    "babel-jest": "24.8.0",
+    "jest": "24.7.1"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/marmelab/polyglot-po.git"
@@ -16,5 +23,13 @@
     "packages/*"
   ],
   "homepage": "https://github.com/marmelab/polyglot-po#readme",
-  "name": "polyglot-po"
+  "name": "polyglot-po",
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "watchPathIgnorePatterns": [
+      "fixtures"
+    ]
+  }
 }

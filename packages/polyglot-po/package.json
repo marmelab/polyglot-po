@@ -14,7 +14,6 @@
     "build-lib": "bili --config ./.bilirc.js",
     "build": "npm-run-all build-pastel build-lib",
     "prepare": "npm-run-all build-pastel build-lib",
-    "test": "react-scripts test --env=node",
     "lint": "eslint --fix \"./src/**/*.js\" \"./commands/**/*.js\""
   },
   "files": [
@@ -55,10 +54,5 @@
     "prettier": "^1.17.1",
     "raf": "^3.4.1",
     "react-scripts": "3.0.1"
-  },
-  "jest": {
-    "watchPathIgnorePatterns": [
-      "fixtures"
-    ]
   }
 }
