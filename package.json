@@ -30,6 +30,10 @@
   "jest": {
     "watchPathIgnorePatterns": [
       "fixtures"
+    ],
+    "modulePathIgnorePatterns": [
+      "npm-cache",
+      ".npm"
     ]
   }
 }

@@ -10273,6 +10273,25 @@ pofile@1.1.0, pofile@^1.1.0:
   resolved "https://registry.yarnpkg.com/pofile/-/pofile-1.1.0.tgz#9ce84bbef5043ceb4f19bdc3520d85778fad4f94"
   integrity sha512-6XYcNkXWGiJ2CVXogTP7uJ6ZXQCldYLZc16wgRp8tqRaBTTyIfF+TUT3EQJPXTLAT7OTPpTAoaFdoXKfaTRU1w==
 
+polyglot-po@polyglot-po@0.0.1:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/polyglot-po/-/polyglot-po-0.0.3.tgz#6233e3245e74de36b5776f447ec377fdc09bc431"
+  integrity sha512-QN2HriMwcfrV2nRcH5NbAZa4wTYib+BbgGEnWEGc8lXVgT3LuOE3wv2hh5VKSaT9PESWtcJDOvbFYmM/RzsUMg==
+  dependencies:
+    "@xstate/react" "^0.7.0"
+    fs-extra "^8.1.0"
+    globby "^10.0.0"
+    ink "^2.3.0"
+    ink-select-input "^3.1.1"
+    ink-spinner "^3.0.1"
+    ink-text-input "^3.2.0"
+    lodash "^4.17.11"
+    pasteljs "^1.0.2"
+    pofile "^1.1.0"
+    prop-types "^15.7.2"
+    react "^16.8.6"
+    xstate "^4.6.3"
+
 portfinder@^1.0.9:
   version "1.0.21"
   resolved "https://registry.yarnpkg.com/portfinder/-/portfinder-1.0.21.tgz#60e1397b95ac170749db70034ece306b9a27e324"
