@@ -12,6 +12,7 @@
   "dependencies": {
     "fs-extra": "^8.1.0",
     "globby": "^10.0.0",
+    "lodash":"4.17.15",
     "pofile": "1.1.0"
   }, 
   "devDependencies": {

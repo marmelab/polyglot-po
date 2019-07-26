@@ -12,6 +12,13 @@ import extractPoEntry from './extractPoEntry';
 export const convertFilesToJson = filePaths =>
     Promise.all(filePaths.map(convertPoToJson));
 
+export const convertPoStringToJson = content => {
+    const po = PO.parse(content);
+    const entries = po.items.map(extractPoEntry);
+
+    return dictionaryToObject(entries);
+};
+
 const convertPoToJson = async filePath => {
     const fullFilePath = path.resolve(filePath);
     const po = await loadLocaleFile(fullFilePath);

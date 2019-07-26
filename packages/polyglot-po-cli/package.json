@@ -22,7 +22,6 @@
   "dependencies": {
     "@xstate/react": "^0.7.0",
     "fs-extra": "^8.1.0",
-    "globby": "^10.0.0",
     "ink": "^2.3.0",
     "ink-select-input": "^3.1.1",
     "ink-spinner": "^3.0.1",
