@@ -2,7 +2,8 @@
   "name": "polyglot-po",
   "version": "0.0.1",
   "description": "",
-  "main": "src/index.js",
+  "main": "./build/index.umd.js",
+  "module": "./build/index.esm.js",
   "scripts": {
     "build": "bili --config ./.bilirc.js",
     "test": "echo \"Error: no test specified\" && exit 1"

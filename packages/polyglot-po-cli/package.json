@@ -2,8 +2,6 @@
   "name": "polyglot-po-cli",
   "version": "0.0.3",
   "license": "Apache-2.0",
-  "main": "./build/index.umd.js",
-  "module": "./build/index.esm.js",
   "bin": "./build/cli.js",
   "engines": {
     "node": ">=8"
@@ -26,7 +24,7 @@
     "ink-select-input": "^3.1.1",
     "ink-spinner": "^3.0.1",
     "ink-text-input": "^3.2.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.15",
     "pasteljs": "^1.0.2",
     "pofile": "^1.1.0",
     "polyglot-po": "0.0.1",

@@ -1,5 +1,3 @@
-const path = require("path");
-
 module.exports = {
     input: "./src/index.js",
     output: {
@@ -7,5 +5,5 @@ module.exports = {
         minify: true,
         format: ["umd", "esm"],
         dir: "./build"
-    }
+    },
 };
