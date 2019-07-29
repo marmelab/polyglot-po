@@ -16,4 +16,6 @@ cache:
 before_install:
     - curl -o- -L https://yarnpkg.com/install.sh | bash
     - sleep 3
+before_script:
+    make build
 script: make test
