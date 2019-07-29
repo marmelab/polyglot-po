@@ -23,13 +23,17 @@
     "packages/*"
   ],
   "homepage": "https://github.com/marmelab/polyglot-po#readme",
-  "name": "polyglot-po",
+  "name": "polyglot-po-monorepo",
   "scripts": {
     "test": "jest"
   },
   "jest": {
     "watchPathIgnorePatterns": [
       "fixtures"
+    ],
+    "modulePathIgnorePatterns": [
+      "npm-cache",
+      ".npm"
     ]
   }
 }

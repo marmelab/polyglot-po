@@ -2,7 +2,8 @@ import path from 'path';
 import PO from 'pofile';
 import fs from 'fs-extra';
 
-import { extractPoEntry, dictionaryToObject } from '../../../common';
+import dictionaryToObject from './dictionaryToObject';
+import extractPoEntry from './extractPoEntry';
 
 /**
  * Convert PO files to JSON files
@@ -10,6 +11,13 @@ import { extractPoEntry, dictionaryToObject } from '../../../common';
  */
 export const convertFilesToJson = filePaths =>
     Promise.all(filePaths.map(convertPoToJson));
+
+export const convertPoStringToJson = content => {
+    const po = PO.parse(content);
+    const entries = po.items.map(extractPoEntry);
+
+    return dictionaryToObject(entries);
+};
 
 const convertPoToJson = async filePath => {
     const fullFilePath = path.resolve(filePath);

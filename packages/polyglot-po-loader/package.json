@@ -2,15 +2,12 @@
   "name": "polyglot-po-loader",
   "version": "0.0.2",
   "description": "",
-  "main": "build/bundle.js",
-  "scripts": {
-    "build": "webpack"
-  },
+  "main": "src/index.js",
+  "scripts": {},
   "dependencies": {
-    "lodash": "4.17.11",
+    "lodash": "4.17.15",
     "pofile": "1.1.0",
-    "webpack": "4.35.2",
-    "webpack-cli": "3.3.6"
+    "polyglot-po": "^0.0.1"
   },
   "author": "",
   "license": "Apache-2.0"

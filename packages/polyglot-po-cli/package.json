@@ -1,0 +1,53 @@
+{
+  "name": "polyglot-po-cli",
+  "version": "0.0.3",
+  "license": "Apache-2.0",
+  "bin": "./build/cli.js",
+  "engines": {
+    "node": ">=8"
+  },
+  "scripts": {
+    "start": "pastel dev",
+    "build": "pastel build",
+    "prepare": "pastel build",
+    "lint": "eslint --fix \"./src/**/*.js\" \"./commands/**/*.js\""
+  },
+  "files": [
+    "build",
+    "LICENSE.md",
+    "readme.md"
+  ],
+  "dependencies": {
+    "@xstate/react": "^0.7.0",
+    "fs-extra": "^8.1.0",
+    "ink": "^2.3.0",
+    "ink-select-input": "^3.1.1",
+    "ink-spinner": "^3.0.1",
+    "ink-text-input": "^3.2.0",
+    "lodash": "^4.17.15",
+    "pasteljs": "^1.0.2",
+    "pofile": "^1.1.0",
+    "polyglot-po": "0.0.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "xstate": "^4.6.3"
+  },
+  "devDependencies": {
+    "@babel/core": "7.4.5",
+    "@babel/preset-env": "7.4.5",
+    "@babel/preset-react": "7.0.0",
+    "cross-env": "^5.2.0",
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^5.0.0",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "7.13.0",
+    "husky": "^2.3.0",
+    "ink-testing-library": "^1.0.2",
+    "lint-staged": "^8.1.7",
+    "npm-run-all": "4.1.5",
+    "prettier": "^1.17.1",
+    "raf": "^3.4.1",
+    "react-scripts": "3.0.1"
+  }
+}

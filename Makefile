@@ -6,12 +6,6 @@ help:
 install: package.json ## Install dependencies
 	@yarn
 
-build-cli: ## Buld the CLI
-	@lerna run build-pastel --stream
-
-build-lib: ## Buld the library
-	@lerna run build-lib --stream
-
 build: ## Buld the packages
 	@lerna run build --stream
 

@@ -1,9 +1,6 @@
-const PO = require('pofile');
-const { extractPoEntry, dictionaryToObject } = require('../../common');
+const { convertPoStringToJson } = require('polyglot-po');
 
-module.exports = function convertPoStringToJson(content) {
-    const po = PO.parse(content);
-    const entries = po.items.map(extractPoEntry);
-    const json = dictionaryToObject(entries);
+module.exports = function polygloPoLoader(content) {
+    const json = convertPoStringToJson(content);
     return `module.exports = ${JSON.stringify(json)}`;
 };
