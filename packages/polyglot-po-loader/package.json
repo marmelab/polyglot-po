@@ -7,7 +7,7 @@
   "dependencies": {
     "lodash": "4.17.15",
     "pofile": "1.1.0",
-    "polyglot-po": "^0.0.1"
+    "polyglot-po": "0.0.4"
   },
   "author": "",
   "license": "Apache-2.0"
