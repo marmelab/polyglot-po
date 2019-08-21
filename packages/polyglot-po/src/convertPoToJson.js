@@ -19,6 +19,14 @@ export const convertPoStringToJson = content => {
     return dictionaryToObject(entries);
 };
 
+export const loadJsonFromPoFile = async filePath => {
+    const fullFilePath = path.resolve(filePath);
+    const po = await loadLocaleFile(fullFilePath);
+    const entries = po.items.map(extractPoEntry);
+
+    return dictionaryToObject(entries);
+};
+
 const convertPoToJson = async filePath => {
     const fullFilePath = path.resolve(filePath);
     const po = await loadLocaleFile(fullFilePath);
