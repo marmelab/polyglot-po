@@ -12,6 +12,6 @@ export default poEntry => {
 
     return {
         key: key.replace('key: ', ''),
-        value: poEntry.msgstr.join('||||'),
+        value: poEntry.msgstr.join('||||') || poEntry.msgid,
     };
 };

@@ -89,6 +89,7 @@ const expectedEnJson = {
             create: 'Create',
         },
         items_created: 'Item created||||Items created',
+        not_yet_translated: 'Not yet translated'
     },
 };
 
@@ -101,6 +102,7 @@ const expectedFrJson = {
             create: 'Créer',
         },
         items_created: 'Élément créé||||Éléments créés',
+        not_yet_translated: 'Not yet translated'
     },
 };
 
