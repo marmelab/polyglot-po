@@ -96,6 +96,20 @@ describe('convertPoToJson', () => {
                     welcome: 'Bienvenue',
                 },
             });
+            expect(
+                convertPoStringToJson(enPo)
+            ).toEqual({
+                root: {
+                    not_yet_translated: 'Not yet translated',
+                    action: {
+                        create: 'Create',
+                        edit: 'Edit',
+                    },
+                    goodbye: 'Goodbye',
+                    items_created: 'Item created||||Items created',
+                    welcome: 'Welcome',
+                },
+            });
         });
     });
 });
