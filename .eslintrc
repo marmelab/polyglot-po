@@ -14,9 +14,7 @@
     "extends": [
         "eslint:recommended",
         "plugin:react/recommended",
-        "plugin:prettier/recommended",
-        "prettier/babel",
-        "prettier/react"
+        "plugin:prettier/recommended"
     ],
     "plugins": [
         "import",
