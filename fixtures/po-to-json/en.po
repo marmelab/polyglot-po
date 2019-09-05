@@ -31,3 +31,7 @@ msgid "Item created"
 msgid_plural "Items created"
 msgstr[0] "Item created"
 msgstr[1] "Items created"
+
+#. key: root.not_yet_translated
+msgid "Not yet translated"
+msgstr ""

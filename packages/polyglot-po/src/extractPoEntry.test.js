@@ -36,4 +36,17 @@ describe('extractPoEntry', () => {
             value: 'englishForOne||||englishForTwo||||englishForMany',
         });
     });
+
+    test('handle entries with empty msgstr by using msgid instead', () => {
+        expect(
+            extractPoEntry({
+                extractedComments: ['key: root.key'],
+                msgid: 'english default text',
+                msgstr: [''],
+            })
+        ).toEqual({
+            key: 'root.key',
+            value: 'english default text',
+        });
+    });
 });
