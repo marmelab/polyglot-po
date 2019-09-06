@@ -24,7 +24,7 @@ Takes three arguments:
 
 Returns a promise resolving as an array with two entries:
  - `input`: the file path of the json file
- - outputput: the filePath of the new po file
+ - `outputput`: the file path of the new po file
 
 Example:
 ```js
