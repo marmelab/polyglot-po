@@ -23,7 +23,7 @@ Takes three arguments:
  - `defaultHeaders`: The PO files headers. See https://www.gnu.org/software/trans-coord/manual/gnun/html_node/PO-Header.html
 
 Returns a promise resolving as an array with two entries:
- - input: the filePath of the json file
+ - `input`: the file path of the json file
  - outputput: the filePath of the new po file
 
 Example:
