@@ -22,7 +22,7 @@ Takes three arguments:
  - `defaultLocaleFile`: The locale from which the po msgid entries will be extracted (default to 'en')
  - `defaultHeaders`: The PO files headers. See https://www.gnu.org/software/trans-coord/manual/gnun/html_node/PO-Header.html
 
-Returns a promise of an array of input/output object, 
+Returns a promise resolving as an array with two entries:
  - input: the filePath of the json file
  - outputput: the filePath of the new po file
 
