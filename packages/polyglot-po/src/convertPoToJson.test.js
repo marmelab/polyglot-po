@@ -1,4 +1,4 @@
-import { convertPoStringToJson } from './convertPoToJson';
+import { convertPoStringToJson, loadJsonFromPoFile } from './convertPoToJson';
 
 const enPo = `msgid ""
 msgstr ""
@@ -108,6 +108,21 @@ describe('convertPoToJson', () => {
                     goodbye: 'Goodbye',
                     items_created: 'Item created||||Items created',
                     welcome: 'Welcome',
+                },
+            });
+        });
+    });
+    describe('loadJsonFromPoFile', () => {
+        test('load a po file and return parsed json', async () => {
+            expect(
+                await loadJsonFromPoFile('./fixtures/po-to-json/en.po')
+            ).toEqual({
+                root: {
+                    action: { create: 'Create', edit: 'Edit' },
+                    goodbye: 'Goodbye',
+                    items_created: 'Item created||||Items created',
+                    welcome: 'Welcome',
+                    not_yet_translated: 'Not yet translated'
                 },
             });
         });
