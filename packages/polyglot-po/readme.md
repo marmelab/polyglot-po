@@ -18,7 +18,7 @@ Convert JSON files to PO files
 
 Takes three arguments:
 
- - filePaths: The paths of the files to convert (eg: ['home/node/myProject/i18n/en.json', 'home/node/myProject/i18n/fr.json'])
+ - `filePaths`: The paths of the files to convert (eg: `['home/node/myProject/i18n/en.json', 'home/node/myProject/i18n/fr.json']`)
  - defaultLocaleFile: The locale from which the po msgid entries will be extracted (default to 'en')
  - defaultHeaders: The PO files headers. See https://www.gnu.org/software/trans-coord/manual/gnun/html_node/PO-Header.html
 
