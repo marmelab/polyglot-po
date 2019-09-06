@@ -57,10 +57,10 @@ Takes one argument
  - `filePaths`: the list of the po files to convert
 
 
-Returns a promise of an array of input/output object
+Returns a promise resolving as an array with two entries:
 
- - input: the filePath of the po file
- - outputput: the filePath of the new json file
+ - `input`: the file path of the po file
+ - `output`: the file path of the new json file
 
 Example:
 ```js
