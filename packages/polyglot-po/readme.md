@@ -54,7 +54,7 @@ Convert PO files to JSON files
 
 Takes one argument
 
- - filePaths: the list of the po files to convert
+ - `filePaths`: the list of the po files to convert
 
 
 Returns a promise of an array of input/output object
