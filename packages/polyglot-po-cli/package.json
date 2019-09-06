@@ -1,6 +1,6 @@
 {
   "name": "polyglot-po-cli",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "license": "Apache-2.0",
   "bin": "./build/cli.js",
   "engines": {
@@ -27,7 +27,7 @@
     "lodash": "^4.17.15",
     "pasteljs": "^1.0.2",
     "pofile": "^1.1.0",
-    "polyglot-po": "0.0.4",
+    "polyglot-po": "0.0.5",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "xstate": "^4.6.3"

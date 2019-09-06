@@ -1,13 +1,13 @@
 {
   "name": "polyglot-po-loader",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "",
   "main": "src/index.js",
   "scripts": {},
   "dependencies": {
     "lodash": "4.17.15",
     "pofile": "1.1.0",
-    "polyglot-po": "0.0.4"
+    "polyglot-po": "0.0.5"
   },
   "author": "",
   "license": "Apache-2.0"
