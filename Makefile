@@ -7,14 +7,14 @@ install: package.json ## Install dependencies
 	@yarn
 
 build: ## Buld the packages
-	@lerna run build --stream
+	@./node_modules/.bin/lerna run build --stream
 
 lint: ## Lint the code and check coding conventions (and automatically fix)
 	@echo "Running linter..."
-	@lerna run lint --stream
+	@./node_modules/.bin/lerna run lint --stream
 
 test: ## Run tests
 	yarn -s test;
 
 start: ## Run the CLI in development mode
-	lerna run start
+	./node_modules/.bin/lerna run start
